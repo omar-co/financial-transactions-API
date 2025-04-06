@@ -16,6 +16,7 @@ class AccountResource extends JsonResource
             'balance' => $this->balance,
             'created_at' => $this->created_at,
             'user' => new UserResource($this->whenLoaded('user') ?? $this->user),
+            'transactions' => TransactionResource::collection($this->whenLoaded('transactions')),
         ];
     }
 }

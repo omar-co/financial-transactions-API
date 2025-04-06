@@ -5,14 +5,10 @@ namespace App\Queries;
 use App\Models\Account;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Traits\ForwardsCalls;
 
 /** @mixin Builder */
-class UserAccountsQuery
+class UserAccountsQuery extends Query
 {
-    use ForwardsCalls;
-    private Builder $builder;
-
     public function __construct()
     {
         $this->builder = Account::query();
@@ -29,12 +25,10 @@ class UserAccountsQuery
         return new self();
     }
 
-    public function __call(string $name, array $arguments): mixed
+    public function accountForUpdate(int $accountId): self
     {
-        return $this->forwardDecoratedCallTo(
-            $this->builder,
-            $name,
-            $arguments,
-        );
+        return self::query()
+        ->where('id', $accountId)
+        ->lockForUpdate();
     }
 }
