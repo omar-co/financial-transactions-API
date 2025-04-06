@@ -2,10 +2,10 @@
 
 namespace App\Processes\Account;
 
-use App\Lib\Process\Process;
 use App\Processes\Account\Pipes\MakeWithdrawPipe;
 use App\Processes\Account\Pipes\RecordTransactionPipe;
 use App\Processes\Account\Pipes\ValidateWithdrawAmountPipe;
+use App\Processes\Process;
 
 class WithdrawProcess extends Process
 {

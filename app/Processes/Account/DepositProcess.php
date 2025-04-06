@@ -2,10 +2,10 @@
 
 namespace App\Processes\Account;
 
-use App\Lib\Process\Process;
 use App\Processes\Account\Pipes\MakeDepositPipe;
 use App\Processes\Account\Pipes\RecordTransactionPipe;
 use App\Processes\Account\Pipes\ValidateDepositAmountPipe;
+use App\Processes\Process;
 
 class DepositProcess extends Process
 {
